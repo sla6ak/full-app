@@ -1,5 +1,8 @@
 # full-app
 
+Есть любопытная возможность добавить авторизацию в любое приложение просто встроив готовую библиотеку - выглядит просто (https://auth0.com/docs/quickstart/spa)
+в рамках данной задачи необходимо пощупать подводные камни руками!
+
 1 express - для работы с запросами, обработка путей, многостраничность "/abc" (https://www.npmjs.com/package/express)
 
 2 mongoose - синтаксис запросов к базе "монгоДБ" (https://mongoosejs.com/docs/guide.html)
@@ -14,6 +17,8 @@
 
 7 express-validator - библиотека для бэкенд валидации полей(https://express-validator.github.io/docs/)
 
-8 mongoDB - База данных где то заграницей (https://cloud.mongodb.com)
+8 jsonwebtoken - создание токена для взаимодействия с клиентом (https://www.npmjs.com/package/jsonwebtoken)
+
+9 mongoDB - База данных где то заграницей (https://cloud.mongodb.com)
 регистрирую кластер на монгоДБ => имя - Viktor, пароль - slabak1989, ip - 176.116.66.1/32
 "mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/?retryWrites=true&w=majority"
