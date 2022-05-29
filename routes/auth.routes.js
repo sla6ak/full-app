@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const User = require("../models/User");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt"); // хеширование паролей для базы данных (усложняем то что накалякал юзер)
+const { body, validationResult } = require("express-validator"); // валидируем поля получаемые от клиента
 const router = Router();
 
 // базовый путь перед роутом '/api/auth' далее перенаправляем '/api/auth/register'
@@ -10,12 +11,14 @@ router.post("/register", async (request, responce) => {
         const duplicateEmail = await User.findOne({ email });
         const duplicateName = await User.findOne({ name });
         if (duplicateEmail || duplicateName) {
-            return responce.status(400).JSON({ massage: "error user, try anather data" });
+            return responce.status(400).json({ massage: "error user, try anather data" });
         }
         const hashPassword = await bcrypt.hash(password, 12);
-        const user = new User({ email, password: hashPassword });
+        const user = new User({ email: email, password: hashPassword });
+        await user.save();
+        responce.status(201).json({ massage: "User creted! My congraduletions" });
     } catch (error) {
-        responce.status(500).JSON({ massage: "error router /register" }); //бэкендчик сам реализовывает объект ошибки!
+        responce.status(500).json({ massage: "error router /register" }); //бэкендчик сам реализовывает объект ошибки!
     }
 }); //функция выполняет логику запросов и ответов
 
@@ -29,7 +32,7 @@ router.post("/login", async (request, responce) => {
             console.log("ok, you login!");
         }
     } catch (error) {
-        responce.status(500).JSON({ massage: "error router /login" });
+        responce.status(500).json({ massage: "error router /login" });
     }
 }); //функция выполняет логику запросов и ответов
 
