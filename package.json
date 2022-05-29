@@ -1,0 +1,29 @@
+{
+    "name": "full-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "server": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sla6ak/full-app.git"
+    },
+    "author": "slabak <slabakxaker@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sla6ak/full-app/issues"
+    },
+    "homepage": "https://github.com/sla6ak/full-app#readme",
+    "dependencies": {
+        "config": "^3.3.7",
+        "mongoose": "^6.3.4"
+    },
+    "devDependencies": {
+        "concurrently": "^7.2.1",
+        "express": "^4.18.1",
+        "nodemon": "^2.0.16"
+    }
+}
