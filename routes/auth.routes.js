@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const router = Router();
 const SECRET_KEY = config.get("jwtSecret");
 
-// базовый путь перед роутом '/api/auth' далее перенаправляем '/api/auth/register'
+// базовый путь перед роутом '/app-contacts/' далее перенаправляем '/app-contacts/register'
 // важно так как роутер.пост либо базовый апп.пост это миделвеер то он может принимать НЕОГРАНИЧЕНОЕ количество миделвееров! тоесть и провалидировать маршрут и обработать функцию взаимодействия с базой данных и ++++ валидацию форм принять массивом как промежуточный миделвеер после роутинга на текущую страницу и перед работой с базой данных.
 router.post(
     "/register",
@@ -38,7 +38,7 @@ router.post(
     }
 ); //функция выполняет логику запросов и ответов
 
-// базовый путь перед роутом '/api/auth' далее перенаправляем '/api/auth/login'
+// базовый путь перед роутом '/app-contacts/' далее перенаправляем '/app-contacts/login'
 router.post(
     "/login",
     [
@@ -67,5 +67,26 @@ router.post(
         }
     }
 ); //функция выполняет логику запросов и ответов
+
+// и наконец проверка токена на валидность
+// базовый путь перед роутом '/app-contacts/' далее перенаправляем '/app-contacts/current'
+router.post("/current", [], async (request, responce) => {
+    try {
+        const { token } = request.headers; //реквест это то что отправляет нам клиен сторона
+        const user = await User.findOne({ token }); // тут мы вытащили конкретного юзера если нашли его
+        if (!user) {
+            return responce.status(400).json({ massage: "User do not find" });
+        }
+        response.status(200).json({
+            token: token,
+            userID: user.id,
+            name: user.name,
+            emeil: user.emeil,
+            massage: `Welcome ${user.name}!`,
+        });
+    } catch (error) {
+        responce.status(500).json({ massage: "error router /login" });
+    }
+});
 
 module.exports = router; // это миделвеер для апи запроса
