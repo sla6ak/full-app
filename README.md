@@ -19,6 +19,10 @@
 
 8 jsonwebtoken - создание токена для взаимодействия с клиентом (https://www.npmjs.com/package/jsonwebtoken)
 
+9 cors - миделвеер для добавления заголовка к серверу для доступности сервера с разных ресурсов (https://expressjs.com/en/resources/middleware/cors.html)
+
+10 @types/express - позволяет ноде распознавать експресс модули (https://www.npmjs.com/package/@types/express)
+
 9 mongoDB - База данных где то заграницей (https://cloud.mongodb.com)
 регистрирую кластер на монгоДБ => имя - Viktor, пароль - slabak1989, ip - 176.116.66.1/32
 "mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/?retryWrites=true&w=majority"
