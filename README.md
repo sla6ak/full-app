@@ -23,6 +23,8 @@
 
 10 @types/express - позволяет ноде распознавать експресс модули (https://www.npmjs.com/package/@types/express)
 
-9 mongoDB - База данных где то заграницей (https://cloud.mongodb.com)
+11 body-parser - миделвеер - анализатор тела превращает JSON в объект (https://www.npmjs.com/package/body-parser)
+
+mongoDB - База данных где то заграницей (https://cloud.mongodb.com)
 регистрирую кластер на монгоДБ => имя - Viktor, пароль - slabak1989, ip - 176.116.66.1/32
 "mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/?retryWrites=true&w=majority"
