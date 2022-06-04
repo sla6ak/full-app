@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const contactApi = createApi({
     reducerPath: "contactApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:5000/app-contacts/",
+        baseUrl: "http://localhost:5000/api-contacts/",
 
         //тут я создаю базовый хедерс для всех запросов вытягивая токен из стейта на любой глубине.
 
@@ -54,10 +54,6 @@ export const contactApi = createApi({
         }),
 
         //запрос получение нового токена для работы пользователя с бэкендом
-        //     {
-        //   "email": "string",
-        //   "password": "string"
-        // }
         loginUser: builder.mutation({
             query: (userData) => ({
                 url: `/users/login`,
@@ -72,7 +68,6 @@ export const contactApi = createApi({
             query: () => ({
                 url: `/users/logout`,
                 method: "POST",
-                // headers: { Authorization: `Bearer ${token}` },
             }),
             invalidatesTags: ["user"],
         }),
@@ -84,14 +79,9 @@ export const contactApi = createApi({
             query: () => ({
                 url: `/users/current`,
                 method: "GET",
-                // headers: { Authorization: `Bearer ${token}` },
             }),
             providesTags: ["user"],
         }),
-        //     {
-        //   "name": "Jacob Mercer",
-        //   "number": "761-23-96"
-        // }
     }),
 });
 

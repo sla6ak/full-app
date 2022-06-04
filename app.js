@@ -2,21 +2,26 @@ const express = require("express");
 const cors = require("cors");
 const config = require("config"); // просто сборник констант в виде объекта
 const mongoose = require("mongoose");
-const router = require("./routes/auth.routes"); // в роуте расписаны запросы и пути к их выполнению на сервере
+const routerAuth = require("./routes/auth.routes"); // в роуте расписаны запросы и пути к их выполнению на сервере
+const routerContacts = require("./routes/contacts.routes");
+const routerDocs = require("./routes/documentations.routes");
 const bodyParser = require("body-parser");
 const PORT = config.get("port") || 5000;
 const BASE_URL = config.get("mongoURL");
-const app = express(); //это наш будущий сервер в переменной создался там лежит масса методов колбеков
-// console.log(app);
-// app.use(cors());
+const app = express();
+// app.use(express.static(path.join("static")));
+
 app.use(bodyParser.urlencoded({ extended: false })); //несовсем понимаю что это за миделвеер, но в доках он указан. без него работает
+// app.use(express.json({extended:true})); //такой же миделвеер для обработки json с клиента
 
 //добавим новые роутеры для различных запросов
-app.use("/app-contacts/", bodyParser.json(), cors(), router); //1й аргумент базовый путь, 2м наше приложение использует роутер в качестве миделвеера
+app.use("/api-contacts/", bodyParser.json(), cors(), routerAuth, routerContacts, routerDocs); //как вариант несколько путей описать отдельно для каждого роута
 
 async function start() {
     try {
-        mongoose.connect(BASE_URL);
+        mongoose.connect(BASE_URL).then(() => {
+            console.log("mongoDB conecting!");
+        });
         app.listen(PORT, () => {
             console.log(`started port ${PORT}!`);
         });
