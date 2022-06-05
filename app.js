@@ -12,10 +12,14 @@ const app = express();
 // app.use(express.static(path.join("static")));
 
 app.use(bodyParser.urlencoded({ extended: false })); //несовсем понимаю что это за миделвеер, но в доках он указан. без него работает
+app.use(bodyParser.json());
 // app.use(express.json({extended:true})); //такой же миделвеер для обработки json с клиента
+app.use(cors());
 
 //добавим новые роутеры для различных запросов
-app.use("/api-contacts/", bodyParser.json(), cors(), routerAuth, routerContacts, routerDocs); //как вариант несколько путей описать отдельно для каждого роута
+app.use("/api-contacts/users", routerAuth);
+app.use("/api-contacts/contacts", routerContacts);
+app.use("/api-contacts/docs/", routerDocs);
 
 async function start() {
     try {

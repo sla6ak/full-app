@@ -8,7 +8,7 @@ const validationSignup = (req, res, next) => {
     ];
     const errOr = validationResult(req);
     if (!errOr.isEmpty) {
-        return res.status(400).json({ error: errOr, massage: "Error validation" });
+        return res.status(400).json({ error: errOr.massage, massage: "Error validation" });
     }
     next();
 };
@@ -17,10 +17,11 @@ const validationLogin = (req, res, next) => {
         check("email", "Error name validation").isEmail(),
         check("password", "Error password validation").exists().isLength({ min: 7 }),
     ];
-    const errOr = validationResult(request);
+    const errOr = validationResult(req);
     if (!errOr.isEmpty) {
-        return response.status(400).json({ error: errOr, massage: "Error validation" });
+        return res.status(400).json({ error: errOr, massage: "Error validation" });
     }
+    next();
 };
 
 module.exports = { validationSignup, validationLogin };

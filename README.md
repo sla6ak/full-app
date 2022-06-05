@@ -28,3 +28,4 @@
 mongoDB - База данных где то заграницей (https://cloud.mongodb.com)
 регистрирую кластер на монгоДБ => имя - Viktor, пароль - slabak1989, ip - 176.116.66.1/32
 "mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/?retryWrites=true&w=majority"
+mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/test
