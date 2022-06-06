@@ -6,7 +6,7 @@ const routerAuth = require("./routes/auth.routes"); // в роуте распи�
 const routerContacts = require("./routes/contacts.routes");
 const routerDocs = require("./routes/documentations.routes");
 const bodyParser = require("body-parser");
-const PORT = config.get("port") || 5000;
+const PORT = process.env.PORT || config.get("port");
 const BASE_URL = config.get("mongoURL");
 const app = express();
 // app.use(express.static(path.join("static")));
@@ -22,6 +22,7 @@ app.use("/api-contacts/contacts", routerContacts);
 app.use("/api-contacts/docs/", routerDocs);
 
 async function start() {
+    console.log(process.env.PORT);
     try {
         mongoose.connect(BASE_URL).then(() => {
             console.log("mongoDB conecting!");

@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+const PORT = process.env.PORT || "http://localhost:5000";
 
 // Define a service using a base URL and expected endpoints
 export const contactApi = createApi({
     reducerPath: "contactApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:5000/api-contacts/",
+        baseUrl: `${PORT}/api-contacts/`,
 
         //тут я создаю базовый хедерс для всех запросов вытягивая токен из стейта на любой глубине.
 
