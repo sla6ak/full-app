@@ -21,20 +21,16 @@ app.use("/api-contacts/users", routerAuth);
 app.use("/api-contacts/contacts", routerContacts);
 app.use("/api-contacts/docs/", routerDocs);
 app.get("/api-contacts/", (req, res) => {
-    res.status(250).send("<h1>Welcome - test page!</h1>");
+    res.status(250).send(`<h1>Welcome - test page on port ${PORT}!</h1>`);
 });
 
 async function start() {
-    console.log(process.env.PORT);
     try {
         mongoose.connect(BASE_URL).then(() => {
-            console.log("mongoDB conecting!");
+            console.log(`listening ${PORT}`);
         });
-        app.listen(PORT, () => {
-            console.log(`started port ${PORT}!`);
-        });
+        app.listen(PORT, () => {});
     } catch (error) {
-        console.log(`server error with code ${error}, try later please`);
         process.exit(0); //завершим процесс допустим с кодом ноль
     }
 }
