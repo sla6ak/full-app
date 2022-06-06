@@ -10,8 +10,9 @@ router.use(function (req, res, next) {
     next();
 });
 // получить список всех доступных методов
-router.get("/docs", (req, res) => {
+router.get("/", (req, res) => {
     // res.sendFile(path.resolve("./static/index.html")); // почему то требует еще раз указать что нам нужно в папку статик для штмлки.
+    res.status(250).json({ message: "all good" });
     console.log("просто верстка на стороне клиента будет и все можно вернуть json");
 });
 
