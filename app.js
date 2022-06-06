@@ -1,13 +1,13 @@
 const express = require("express");
 const cors = require("cors");
-const config = require("config"); // просто сборник констант в виде объекта
+// const config = require("config"); // просто сборник констант в виде объекта
 const mongoose = require("mongoose");
 const routerAuth = require("./routes/auth.routes"); // в роуте расписаны запросы и пути к их выполнению на сервере
 const routerContacts = require("./routes/contacts.routes");
 const routerDocs = require("./routes/documentations.routes");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || config.get("port");
-const BASE_URL = config.get("mongoURL");
+const PORT = process.env.PORT || 5000;
+const BASE_URL = "mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/?retryWrites=true&w=majority";
 const app = express();
 // app.use(express.static(path.join("static")));
 

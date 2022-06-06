@@ -1,5 +1,0 @@
-{
-    "port": 5000,
-    "jwtSecret": "any string for differend key",
-    "mongoURL": "mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/?retryWrites=true&w=majority"
-}

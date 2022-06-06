@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const User = require("../models/User");
-const config = require("config"); // просто сборник констант в виде объекта
+// const config = require("config"); // просто сборник констант в виде объекта
 const bcrypt = require("bcrypt"); // хеширование паролей для базы данных (усложняем то что накалякал юзер)
 const { validationSignup, validationLogin } = require("./middleware/validation.middleware"); // валидируем поля получаемые от клиента. имеет внутри "check" миллион метоов валидации для любых нужд
 const jwt = require("jsonwebtoken");
 const router = Router();
-const SECRET_KEY = config.get("jwtSecret");
+const SECRET_KEY = "any string for differend key";
 const errMassage = require("./error/error.masage");
 const authCurent = require("./middleware/auth.middleware");
 
