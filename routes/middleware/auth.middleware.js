@@ -1,6 +1,8 @@
 const errorMassage = require("../error/error.masage");
 const jwt = require("jsonwebtoken");
-const config = require("config"); // просто сборник констант в виде объекта
+const dotenv = require("dotenv");
+dotenv.config();
+const { SECRET_KEY } = process.env;
 
 module.exports = async (req, res, next) => {
     if (req.method === "OPTIONS") {
@@ -11,7 +13,7 @@ module.exports = async (req, res, next) => {
         if (!token) {
             return errorMassage(res, 401);
         }
-        const tokenDecoder = jwt.verify(token, config.get("jwtSecret")); // что шифровали то и вытянем ({ id: user.id })
+        const tokenDecoder = jwt.verify(token, SECRET_KEY); // что шифровали то и вытянем ({ id: user.id })
         req.id = tokenDecoder.id;
         next();
     } catch (error) {

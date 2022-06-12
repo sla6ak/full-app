@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-// const config = require("config"); // просто сборник констант в виде объекта
 const mongoose = require("mongoose");
 const routerAuth = require("./routes/auth.routes"); // в роуте расписаны запросы и пути к их выполнению на сервере
 const routerContacts = require("./routes/contacts.routes");
@@ -28,9 +27,11 @@ app.use("/api-contacts/docs/", routerDocs);
 async function start() {
     try {
         mongoose.connect(BASE_URL).then(() => {
-            console.log(`listening ${PORT}`);
+            console.log(`mongoDB connecting`);
         });
-        app.listen(PORT, () => {});
+        app.listen(PORT, () => {
+            console.log("listening ${PORT}");
+        });
     } catch (error) {
         process.exit(0); //завершим процесс допустим с кодом ноль
     }
