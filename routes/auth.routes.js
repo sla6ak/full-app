@@ -5,7 +5,9 @@ const bcrypt = require("bcrypt"); // хеширование паролей дл�
 const { validationSignup, validationLogin } = require("./middleware/validation.middleware"); // валидируем поля получаемые от клиента. имеет внутри "check" миллион метоов валидации для любых нужд
 const jwt = require("jsonwebtoken");
 const router = Router();
-const SECRET_KEY = "any string for differend key";
+const dotenv = require("dotenv");
+dotenv.config();
+const { SECRET_KEY } = process.env;
 const errMassage = require("./error/error.masage");
 const authCurent = require("./middleware/auth.middleware");
 

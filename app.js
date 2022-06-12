@@ -6,8 +6,12 @@ const routerAuth = require("./routes/auth.routes"); // в роуте распи�
 const routerContacts = require("./routes/contacts.routes");
 const routerDocs = require("./routes/documentations.routes");
 const bodyParser = require("body-parser");
+
+const dotenv = require("dotenv");
+dotenv.config();
+const { BASE_URL } = process.env;
+
 const PORT = process.env.PORT || 5000;
-const BASE_URL = "mongodb+srv://Viktor:slabak1989@myapp.hwweftk.mongodb.net/?retryWrites=true&w=majority";
 const app = express();
 // app.use(express.static(path.join("static")));
 
